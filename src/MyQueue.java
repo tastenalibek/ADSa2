@@ -1,21 +1,37 @@
-public class MyQueue<T> {
-    private MyLinkedList<T> list;
+public class MyQueue<T extends Comparable<T>> {
+    MyArrayList<T> queue = new MyArrayList<>(); // Implements queue functionality using an ArrayList
 
-    public MyQueue() {
-        this.list = new MyLinkedList<>();
+    public MyQueue() { // Default constructor for initializing the queue
     }
 
-    public void enqueue(T item) {
-        list.addLast(item);
+    public T front() { // Retrieves the first element of the queue without removal
+        return queue.get(0);
     }
 
-    public T dequeue() {
-        if (list.size() == 0) throw new IllegalStateException("Queue is empty");
-        return list.removeFirst();
+    public T back() { // Retrieves the last element of the queue without removal
+        return queue.get(queue.size() - 1);
     }
 
-    public T peek() {
-        if (list.size() == 0) throw new IllegalStateException("Queue is empty");
-        return list.getFirst();
+    public T dequeue() { // Removes and returns the first element of the queue
+        T item = queue.get(0);
+        queue.remove(0);
+        return item;
+    }
+
+    public void enqueue(T item) { // Inserts an element at the end of the queue
+        queue.add(item);
+    }
+
+    public boolean isEmpty() { // Determines whether the queue contains any elements
+        return queue.size() == 0;
+    }
+
+    public int size() { // Returns the number of elements in the queue
+        return queue.size();
+    }
+
+    public void clear() { // Removes all elements from the queue
+        queue.clear();
     }
 }
+
