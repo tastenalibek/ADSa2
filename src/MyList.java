@@ -10,7 +10,7 @@ public interface MyList<T> extends Iterable<T> {
     void remove(int index);
     void removeFirst();
     void removeLast();
-    void sort(); // you may need to use a Comparator or make T extend Comparable
+    void sort();
     int indexOf(Object object);
     int lastIndexOf(Object object);
     boolean exists(Object object);
